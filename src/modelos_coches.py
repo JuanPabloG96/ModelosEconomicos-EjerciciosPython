@@ -163,8 +163,48 @@ def clustering_coches_similares():
     except Exception as e:
         print(f"Ocurrió un error: {e}")
 
-def main ():
-    ...
+def menu():
+    print("SISTEMA DE ANÁLISIS DE VEHÍCULOS")
+    print("1. Clasificar por eficiencia y popularidad")
+    print("2. Predecir ventas")
+    print("3. Clustering de coches similares")
+    print("4. Salir")
+    
+    try:
+        opcion = int(input("\nSelecciona una opción (1-4): "))
+        return opcion
+    except ValueError:
+        print("Error: Por favor ingresa un número válido.")
+        sleep(2)
+        return -1
+
+def main():
+    funciones = {
+        1: lambda: print("\n", clasificar_eficiencia_popularidad()),
+        2: lambda: print("\n", predecir_ventas()),
+        3: lambda: clustering_coches_similares(),
+        4: lambda: exit()
+    }
+    
+    while True:
+        limpiar_pantalla()
+        opcion = menu()
+        
+        if opcion in funciones:
+            limpiar_pantalla()
+            titulos = {
+                1: "CLASIFICACIÓN POR EFICIENCIA Y POPULARIDAD",
+                2: "PREDICCIÓN DE VENTAS", 
+                3: "CLUSTERING DE COCHES SIMILARES"
+            }
+            if opcion in titulos:
+                print(titulos[opcion])
+            funciones[opcion]()
+            if opcion != 4:
+                input("\nPresiona Enter para continuar...")
+        else:
+            print("Opción no válida. Por favor selecciona una opción entre 1 y 4.")
+            sleep(2)
 
 if __name__ == "__main__":
     main()
