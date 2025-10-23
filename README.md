@@ -1,4 +1,4 @@
-# Proyecto de Análisis de Datos y Modelado
+# Ejercicios en clase (Modelos economicos)
 ### Requisitos Previos
 
 - Python 3.8 o superior
